@@ -15,21 +15,15 @@ using std::vector;
 
 int main() {
 
-    Transaction tx1("rubensaw", "pignonea", 0x1);
-    Transaction tx2("hendrix7", "lengah23", 0x2);
-    Transaction tx3("mirabit0", "mckinn36", 0x3);
-    Transaction tx4("dremannd", "brandlem", 0x4);
-    Transaction tx5("webemal8", "ryannick", 0x5);
+    // Transaction tx1("rubensaw", "pignonea", 0x1);
+    // Transaction tx2("hendrix7", "lengah23", 0x2);
+    // Transaction tx3("mirabit0", "mckinn36", 0x3);
+    // Transaction tx4("dremannd", "brandlem", 0x4);
+    // Transaction tx5("webemal8", "ryannick", 0x5);
 
+    unsigned long var = block_hash(0x0, 0x1, 0x2, 0x3, true);
+    cout << var << endl;
+    
 
-    cout << tx1.view() << endl;
-    vector<unsigned long> vec = {tx1._hash, tx2._hash, tx3._hash, tx4._hash, tx5._hash};
-
-    auto block_hash = merkle_hash(vec);
-    cout << block_hash << endl<< sizeof(block_hash) << endl;
-
-    Block blk(vec);
-
-    cout << blk;
-
+    
 }
