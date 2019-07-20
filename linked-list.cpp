@@ -45,7 +45,7 @@ struct Block{
         }
         valid_ = true;
     }
-    void validate() { valid_ = true;}
+    void validate() { valid_ = true; }
     friend class Blockchain;
 
     void print(){
@@ -64,14 +64,12 @@ struct Blockchain{
     long size_{};
     Block* genesis_{};
     Block* current_ {};
-    Block* end_{};
 
     Blockchain(){
         size_= 0;
         Block* gblock = new Block;
         genesis_ = gblock;
         current_ = gblock;
-        end_ = gblock;
         gblock->validate();
     }
 
@@ -96,15 +94,43 @@ int main(){
     Transaction tx2("fenech", "leno", 20);
     Transaction v[BLOX_SZ] = {tx1, tx2};
     Block b1(0, v);
+    // b1.print();
+    // cout << "\n\n";
+    // b1.print();
+    // cout << b1.valid_ << endl;
+    // b1.print();
 
-    Transaction tx3("dex", "sean", 11);
-    Transaction tx4("reece", "aaron", 21);
-    Transaction v1[BLOX_SZ] = {tx3, tx4};
-    Block b2(0, v1);
+
+    // Transaction tx3("dex", "sean", 11);
+    // Transaction tx4("reece", "aaron", 21);
+    // Transaction v1[BLOX_SZ] = {tx3, tx4};
+    // Block b2(0, v1);
+        cout << std::boolalpha <<"Valid? (F) " << b1.valid_<< endl; 
 
     Blockchain chain;
+
+    b1.validate();
+
+    b1.id_num_++;
+
+    cout <<"Valid? (T) " << b1.valid_<< endl;
+
     chain.append(b1);
-    chain.append(b2);
+    cout << "Current&: " << chain.current_ << endl;
+    cout << chain.current_->id_num_ << endl;
+    cout << "valid? (T) " << chain.current_->valid_ << endl;
+
     chain.print();
+
+
+    // // b1.validate();
+    // chain.append(b1);
+
+    // b2.validate();
+    // chain.append(b2);
+    // cout << std::boolalpha;
+    // cout << "b1 t? " << b1.valid_ << endl;
+    // cout << "b2 t? " << b2.valid_ << endl;
+    // // chain.print();
 
 }
